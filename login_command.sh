@@ -34,3 +34,15 @@ app_name = "users"
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
 ]
+
+# templates 폴더 안에 base.html 생성.
+# 다음 users 폴더 생성 후 login.html 생성
+{% extends "base.html" %}
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
